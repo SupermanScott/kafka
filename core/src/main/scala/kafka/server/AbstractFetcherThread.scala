@@ -152,7 +152,7 @@ abstract class AbstractFetcherThread(name: String,
                   try {
                     val newOffset = handleOffsetOutOfRange(topicAndPartition)
                     partitionMap.put(topicAndPartition, new PartitionFetchState(newOffset))
-                    error("Current offset %d for partition [%s,%d] out of range; reset offset to %d"
+                    warn("Current offset %d for partition [%s,%d] out of range; reset offset to %d"
                       .format(currentPartitionFetchState.offset, topic, partitionId, newOffset))
                   } catch {
                     case e: Throwable =>
